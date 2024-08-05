@@ -7,7 +7,6 @@ public class Car {
     private Integer distance;
 
     public Car(String name) {
-        validate(name);
         this.name = name;
         this.distance = 0;
     }
@@ -16,6 +15,10 @@ public class Car {
         if (number.compareTo(BOUNDARY_VALUE) >= 0) {
             advance();
         }
+    }
+
+    private void advance() {
+        this.distance++;
     }
 
     /**
@@ -28,18 +31,4 @@ public class Car {
     public Integer getDistance() {
         return this.distance;
     }
-
-    /**
-     * private 메서드
-     */
-    private void advance() {
-        this.distance++;
-    }
-
-    private void validate(String name) {
-        if (name.length() > 6) {
-            throw new IllegalArgumentException("name length is greater than 5");
-        }
-    }
-
 }

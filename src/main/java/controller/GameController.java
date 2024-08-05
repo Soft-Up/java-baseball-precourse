@@ -1,7 +1,8 @@
 package controller;
 
-import Service.CarService;
+import domain.CarService;
 import domain.RandomNumberGenerator;
+import java.util.Arrays;
 import view.ErrorView;
 import view.InputView;
 import view.OutputView;
@@ -25,7 +26,7 @@ public class GameController {
         boolean success = false;
         do {
             try {
-                carService.addCars(InputView.inputCarNames().split(","));
+                carService.addCars(Arrays.stream(InputView.inputCarNames().split(",")).toList());
                 success = true;
             } catch (IllegalArgumentException e) {
                 ErrorView.printError(e);
